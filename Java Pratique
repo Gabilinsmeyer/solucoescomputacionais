@@ -1,0 +1,103 @@
+// Usuario
+public class Usuario {
+    private String nome;
+    private String endereco;
+    private String email;
+
+    public Usuario(String nome, String endereco, String email) {
+        this.nome = nome;
+        this.endereco = endereco;
+        this.email = email;
+    }
+
+}
+
+// Evento
+import java.time.LocalDateTime;
+
+public class Evento {
+    private String nome;
+    private String endereco;
+    private String categoria;
+    private LocalDateTime horario;
+    private String descricao;
+
+    public Evento(String nome, String endereco, String categoria, LocalDateTime horario, String descricao) {
+        this.nome = nome;
+        this.endereco = endereco;
+        this.categoria = categoria;
+        this.horario = horario;
+        this.descricao = descricao;
+    }
+
+    // Notificações
+    import java.io.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class SistemaEventos {
+    private List<Usuario> usuarios;
+    private List<Evento> eventos;
+
+    public SistemaEventos() {
+        this.usuarios = new ArrayList<>();
+        this.eventos = new ArrayList<>();
+        carregarEventos();
+    }
+
+    public void cadastrarUsuario(String nome, String endereco, String email) {
+        Usuario usuario = new Usuario(nome, endereco, email);
+        usuarios.add(usuario);
+    }
+
+    public void cadastrarEvento(String nome, String endereco, String categoria, LocalDateTime horario, String descricao) {
+        Evento evento = new Evento(nome, endereco, categoria, horario, descricao);
+        eventos.add(evento);
+        salvarEventos();
+    }
+
+    public void visualizarEventos() {
+        // Exibir os eventos cadastrados
+    }
+
+    public void participarEvento(int indiceEvento, int indiceUsuario) {
+        // Permitir que o usuário participe de um evento
+    }
+
+    public void cancelarParticipacao(int indiceEvento, int indiceUsuario) {
+        // Cancelar a participação do usuário em um evento
+    }
+
+    // Outros métodos necessários
+
+    private void carregarEventos() {
+        try (BufferedReader br = new BufferedReader(new FileReader("events.data"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                // Interpretar e criar objetos Evento a partir do arquivo
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void salvarEventos() {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("events.data"))) {
+            for (Evento evento : eventos) {
+                // Salvar os eventos no arquivo
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        SistemaEventos sistema = new SistemaEventos();
+        // Interação com o usuário (cadastrar, visualizar eventos, etc.)
+    }
+}
+
+
+}
